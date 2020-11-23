@@ -14,6 +14,7 @@ app.post('/___________/:repo', (req, res) => {
   const { repo } = req.params;
   const payload = req.body;
 
+  console.log('headers', JSON.stringify(req.headers, null, 2));
   console.log('payload', JSON.stringify(payload, null, 2));
 
   if (credentials.secret === payload.hook.config.secret && repo) {
