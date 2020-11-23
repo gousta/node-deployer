@@ -12,12 +12,14 @@ app.use(bodyParser.json())
 
 app.post('/:repo/:secret', (req, res) => {
   const { repo, secret } = req.params;
+  console.log("Incoming:", repo, secret);
 
   if (credentials.secret === secret && repo) {
     const cleaned = repo.replace(regex, repo);
-
+    const location = `/var/www/${cleaned}`;
     try {
-      exec(`cd /var/www/${cleaned} && git pull`);
+      console.log("Executing:", location);
+      exec(`cd ${location} && git pull`);
     } catch (e) {
       console.error(e);
     }
