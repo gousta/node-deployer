@@ -10,14 +10,10 @@ const regex = /[^a-zA-Z0-9.]/g; // cleaner regex
 // parse application/json
 app.use(bodyParser.json())
 
-app.post('/___________/:repo', (req, res) => {
-  const { repo } = req.params;
-  const payload = req.body;
+app.post('/:repo/:secret', (req, res) => {
+  const { repo, secret } = req.params;
 
-  console.log('headers', JSON.stringify(req.headers, null, 2));
-  console.log('payload', JSON.stringify(payload, null, 2));
-
-  if (credentials.secret === payload.hook.config.secret && repo) {
+  if (credentials.secret === secret && repo) {
     const cleaned = repo.replace(regex, repo);
 
     try {
