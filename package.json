@@ -1,7 +1,7 @@
 {
   "name": "node-deployer",
   "version": "1.0.0",
-  "main": "node-deployer.js",
+  "main": "deployer.js",
   "repository": "https://github.com/gousta/node-deployer",
   "author": "Stratos Giouldasis <giouldasis.stratos@gmail.com>",
   "license": "MIT",
@@ -10,6 +10,6 @@
     "express": "^4.16.4"
   },
   "scripts": {
-    "start": "node node-deployer.js"
+    "start": "node deployer.js"
   }
 }
