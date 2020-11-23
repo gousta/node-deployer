@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const exec = require('child_process').exec;
-const credentials  = require('credentials.json');
+const credentials  = require('./credentials.json');
 const port = 3939
 
 const regex = /[^a-zA-Z0-9.]/g; // cleaner regex
