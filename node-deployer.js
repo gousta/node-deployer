@@ -19,7 +19,11 @@ app.post('/___________/:repo', (req, res) => {
   if (credentials.secret === payload.hook.config.secret && repo) {
     const cleaned = repo.replace(regex, repo);
 
-    exec(`cd /var/www/${cleaned} && git pull`);
+    try {
+      exec(`cd /var/www/${cleaned} && git pull`);
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   res.send(`OK: ${repo}`);
