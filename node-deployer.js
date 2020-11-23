@@ -8,9 +8,11 @@ const regex = /[^a-zA-Z0-9.]/g; // cleaner regex
 
 app.post('/___________/:repo', (req, res) => {
   const { repo } = req.params;
-  const { secret } = req.body;
+  const payload = req.body;
   
-  if(credentials.secret === secret && repo) {
+  console.log('payload', JSON.stringify(payload, null, 2));
+  
+  if(credentials.secret === payload.hook.config.secret && repo) {
     const cleaned = repo.replace(regex, repo);
 
     exec(`cd /var/www/${cleaned} && git pull`);
