@@ -2,13 +2,9 @@ const express = require('express');
 const app = express();
 const exec = require('child_process').exec;
 const credentials = require('./credentials.json');
-const bodyParser = require('body-parser');
 const port = 3939;
 
 const regex = /[^a-zA-Z0-9.]/g; // cleaner regex
-
-// parse application/json
-app.use(bodyParser.json())
 
 app.post('/:repo/:secret', (req, res) => {
   const { repo, secret } = req.params;
